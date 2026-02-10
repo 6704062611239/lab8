@@ -1,6 +1,7 @@
 #include <stdio.h>
 int checkscore(char std[]);
 int studentcorrect(char stu[][100]);
+int uncorrect(char stu[][100]);
 int student;
 
 int main() {
@@ -23,7 +24,8 @@ int main() {
         student = i;
         printf("std %d => %d\n", (i+1), checkscore(s));
     }
-    studentcorrect(s);
+    printf("studentcorrect 1 = %d\n",studentcorrect(s));
+    printf("choses %d",uncorrect(s));
 }
 
 int checkscore(char std[]) {
@@ -46,5 +48,25 @@ int studentcorrect(char stu[][100]){
     		score++;
 		}
 	}
-	printf("studentcorrect 1 = %d",score);
+	return score;
+}
+
+int uncorrect(char stu[][100]){
+	char keys[10] = {'D','B','D','C','C','D','A','E','A','D'};
+	int c[10];
+	int i,j,min=10,hard;
+	for(i=0;i<8;i++){
+		for(j=0;j<10;j++){
+			if(stu[i][j] == keys[j]){
+				c[j]++;
+			}
+		}
+	}
+	for(i=0;i<10;i++){
+		if(c[i]<min){
+			min=c[i];
+			hard = i+1;
+		}
+	}
+	return hard;
 }

@@ -1,9 +1,10 @@
 #include <stdio.h>
 int checkscore(char std[]);
+int studentcorrect(char stu[][100]);
 int student;
 
 int main() {
-    int i,j,score=0;
+    int i,j;
     char s[100][100];
 	char ans[8][10] = {
         {'A','B','A','C','C','D','E','E','A','D'},
@@ -22,12 +23,7 @@ int main() {
         student = i;
         printf("std %d => %d\n", (i+1), checkscore(s));
     }
-    for(i=0;i<8;i++){
-    	if(s[i][0] == keys[0]){
-    		score++;
-		}
-	}
-	printf("studentcorrect 1 = %d",score);
+    studentcorrect(s);
 }
 
 int checkscore(char std[]) {
@@ -42,3 +38,13 @@ int checkscore(char std[]) {
     return score;
 }
 
+int studentcorrect(char stu[][100]){
+	char keys[10] = {'D','B','D','C','C','D','A','E','A','D'};
+	int i,score=0;
+	for(i=0;i<8;i++){
+    	if(stu[i][0] == keys[0]){
+    		score++;
+		}
+	}
+	printf("studentcorrect 1 = %d",score);
+}
